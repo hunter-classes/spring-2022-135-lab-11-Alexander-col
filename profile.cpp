@@ -1,20 +1,37 @@
-#pragma once
-#include "profile.h"
+#include "profile.h"    
+#include <iostream>
+#include <string>
+
+    // Default Profile constructor (username="", displayname="")
+    Profile::Profile()
+    {
+        username = "";
+        displayname = "";
+    }
+
 
 
     // Profile constructor for a user (initializing 
     // private variables username=usrn, displayname=dspn)
-    std::Profile(std::string usrn, std::string dspn)
+    Profile::Profile(std::string usrn, std::string dspn)
     {
         username = usrn;
         displayname = dspn;
-        return Profile;
     }
-    // Default Profile constructor (username="", displayname="")
-    std::Profile();
+
     // Return username
-    std::string getUsername();
+    std::string getUsername()
+    {
+        return username;
+    }
     // Return name in the format: "displayname (@username)"
-    std::string getFullName();
+    std::string getFullName()
+    {
+        std::string output = "@" + username;
+        return output
+    }
     // Change display name
-    void setDisplayName(std::string dspn);
+    void setDisplayName(std::string dspn)
+    {
+        displayname = dspn;
+    }
