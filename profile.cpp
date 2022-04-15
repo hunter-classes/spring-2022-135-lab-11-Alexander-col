@@ -1,6 +1,6 @@
 #include "profile.h"    
-#include <iostream>
 #include <string>
+#include <iostream>
 
     // Default Profile constructor (username="", displayname="")
     Profile::Profile()
@@ -8,8 +8,6 @@
         username = "";
         displayname = "";
     }
-
-
 
     // Profile constructor for a user (initializing 
     // private variables username=usrn, displayname=dspn)
@@ -20,18 +18,20 @@
     }
 
     // Return username
-    std::string getUsername()
+    std::string Profile::getUsername()
     {
         return username;
     }
+
     // Return name in the format: "displayname (@username)"
-    std::string getFullName()
+    std::string Profile::getFullName()
     {
-        std::string output = "@" + username;
-        return output
+        std::string output = displayname  + " (@" + username + ")";
+        return output;
     }
+    
     // Change display name
-    void setDisplayName(std::string dspn)
+    void Profile::setDisplayName(std::string dspn)
     {
         displayname = dspn;
     }

@@ -1,4 +1,5 @@
-
+#pragma once
+#include <string>
 class Profile {
 private:
     std::string username;

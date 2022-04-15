@@ -54,3 +54,52 @@ bool Network::addUser(std::string usrn, std::string dspn)
 
     return true;
 }
+
+bool Network::follow(std::string user, std::string target) 
+{ 
+    // Makes user follow target 
+    if(findID(user) == -1 || findID(target) == -1) 
+    {
+
+        return false;
+    }
+
+    following[findID(user)][findID(target)] = true;
+    return true; 
+}
+
+void Network::printDot() { 
+/*
+digraph {
+    "@mario"
+    "@luigi"
+    "@yoshi"
+    "@mario" -> "@luigi"
+    "@luigi" -> "@mario"
+    "@luigi" -> "@yoshi"
+    "@yoshi" -> "@mario"
+}   
+*/
+
+    std::cout << "digraph {" << std::endl;
+    for(int i = 0; i < numUsers; i++) 
+    { 
+        std::cout << "  \"@" << profiles[i].getUsername() << "\"" << std::endl;
+    }
+
+    std::cout << std::endl;
+
+    for(int i = 0; i < MAX_USERS; i++) 
+    { 
+        for(int j = 0; j < MAX_USERS; j++) 
+        { 
+            if(following[i][j] == true) 
+            { 
+                std::cout << "  \"@" << profiles[i].getUsername() << "\" -> \"" << 
+                             "@" << profiles[j].getUsername() << "\"" << std::endl;
+            }
+        }
+    }
+
+    std::cout << "}" << std::endl;
+}
